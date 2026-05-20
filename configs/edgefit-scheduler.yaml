@@ -1,0 +1,54 @@
+apiVersion: kubescheduler.config.k8s.io/v1
+kind: KubeSchedulerConfiguration
+
+leaderElection:
+  leaderElect: false
+
+clientConnection:
+  # Replace this path with your local kubeconfig path.
+  kubeconfig: "/path/to/kubeconfig"
+
+profiles:
+  - schedulerName: edge-aware-scheduler
+    plugins:
+      score:
+        disabled:
+          - name: "*"
+        enabled:
+          - name: EdgeFit
+            weight: 1
+    pluginConfig:
+      - name: EdgeFit
+        args:
+          apiVersion: kubescheduler.config.k8s.io/v1
+          kind: EdgeFitArgs
+          nodeClassLabel: node-class
+          weights:
+            class: 0.25
+            packing: 0.20
+            balance: 0.35
+            fragmentation: 0.20
+          classes:
+            - name: iot-c
+              cpu: "1"
+              memory: "2Gi"
+              rank: 0
+            - name: iot-b
+              cpu: "2"
+              memory: "3Gi"
+              rank: 1
+            - name: iot-a
+              cpu: "2"
+              memory: "4Gi"
+              rank: 2
+            - name: gateway
+              cpu: "4"
+              memory: "16Gi"
+              rank: 3
+            - name: powerful
+              cpu: "8"
+              memory: "32Gi"
+              rank: 4
+          minFragment:
+            cpu: "500m"
+            memory: "500Mi"

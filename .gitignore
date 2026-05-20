@@ -6,6 +6,8 @@
 bin
 testbin/*
 hack/tools/bin/*
+*.bak
+*.log
 
 # macOS
 .DS_Store
