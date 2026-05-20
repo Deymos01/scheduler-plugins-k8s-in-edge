@@ -24,9 +24,9 @@ profiles:
           kind: EdgeFitArgs
           nodeClassLabel: node-class
           weights:
-            class: 0.25
-            packing: 0.20
-            balance: 0.35
+            class: 0.30
+            packing: 0.25
+            balance: 0.25
             fragmentation: 0.20
           classes:
             - name: iot-c
