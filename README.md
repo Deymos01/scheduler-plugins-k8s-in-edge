@@ -2,6 +2,14 @@
 
 # Scheduler Plugins
 
+> This fork adds the **EdgeFit** scheduler plugin for experiments with Kubernetes scheduling on heterogeneous edge nodes.
+>
+> EdgeFit is a custom `Score` plugin for `kube-scheduler`. It uses Kubernetes resource requests and node capacity classes to prefer suitable edge nodes, reduce resource fragmentation, and keep larger nodes for more demanding Pods.
+>
+> The plugin was developed as part of a bachelor's thesis on scheduling strategies for heterogeneous edge computing nodes.
+>
+> More details: [EdgeFit plugin documentation](pkg/edgefit/README.md).
+
 Repository for out-of-tree scheduler plugins based on the [scheduler framework](https://kubernetes.io/docs/concepts/scheduling-eviction/scheduling-framework/).
 
 This repo provides scheduler plugins that are exercised in large companies.
@@ -40,6 +48,10 @@ environments.
 * [Cross Node Preemption](pkg/crossnodepreemption/README.md)
 * [Pod State](pkg/podstate/README.md)
 * [Quality of Service](pkg/qos/README.md)
+
+This fork also includes:
+
+* [EdgeFit](pkg/edgefit/README.md)
 
 ## Compatibility Matrix
 
